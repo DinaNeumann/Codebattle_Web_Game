@@ -533,3 +533,113 @@
     - Отправить любому игроку приглашение на баттл
   expected-result: |
     При отказе от приглашения пришло уведомление "Invite has been canceled"
+
+- summary: |
+    Проверка авторизации незарегистрированного пользователя
+  requirement: |
+    Отказ при авторизации незарегистрированного пользователя
+  prerequisites:
+    Открыта страница авторизации
+  test-data: |
+    no data
+  steps:
+    - Ввести корректный email, например emailll@gmail.com
+    - Ввести пароль
+    - Нажать на кнопку "Submit"
+  expected-result: |
+    Появится надпись "EMAIL_NOT_FOUND"
+
+- summary: |
+    Проверка восстановления пароля
+  requirement: |
+   Восстановление пароля
+  prerequisites: |
+    Открыта страница авторизации
+  test-data: |
+    no data
+  steps:
+    - Нажать на кнопку "Forgot your password?"
+    - Ввести зарегистрированный email
+    - Нажать на кнопку "Submit"
+    - Убедиться, что на экране появилось сообщение "We have sent you an email with instructions on how to reset your password"
+    - Открыть почтовый ящик указанной ранее почты
+    - Открыть на письмо от noreply@codebattle-5f929.firebaseapp.com
+    - Перейти по ссылке из письма
+    - Заполнить поле "New password"
+    - Нажать на кнопку "Save"
+  expected-result: |
+    Пароль восстановлен
+
+- summary: |
+    Проверка авторизации после восстановления пароля
+  requirement: |
+   Авторизация с восстановленным паролем
+  prerequisites: |
+    Проведено восставление пароля
+    Открыта страница авторизации
+  test-data: |
+    no data
+  steps:
+    - Ввести зарегистрированный email
+    - Ввести восстановленный пароль 
+    - Нажать на кнопку "Submit"
+  expected-result: |
+    Авторизация с восстановленным паролем
+
+- summary: |
+    Проверка сброса терминала в баттле
+  requirement: |
+   Сброс терминала в баттле
+  prerequisites: |
+    no data
+  test-data: |
+    no data
+  steps:
+    - Создать баттл с любыми условиями
+    - Написать в терминале любые символы 
+    - Нажать на кнопку "Reset solution"
+  expected-result: |
+    Сброс терминала в баттле
+
+- summary: |
+    Проверка решения игрока в баттле
+  requirement: |
+   Происходит проверка решения игрока в баттле
+  prerequisites: |
+    no data
+  test-data: |
+    no data
+  steps:
+    - Создать баттл с любыми условиями
+    - Написать в терминале любые символы 
+    - Нажать на кнопку "Run"
+  expected-result: |
+    Произошла проверка решения игрока с показом результата
+
+- summary: |
+    Проверка запуска инструкции в баттле
+  requirement: |
+   Запуск инструкции в баттле
+  prerequisites: |
+    no data
+  test-data: |
+    no data
+  steps:
+    - Создать баттл с любыми условиями
+    - Нажать на кнопку "Show guide"
+  expected-result: |
+    Запуск инструкции в баттле
+
+- summary: |
+    Проверка авторизации через Discord
+  requirement: |
+   Пользователь авторизовался на сайте через профиль Discord
+  prerequisites: |
+    Выполнен вход в аккаунт Discord
+  test-data: |
+    no data
+  steps:
+    - Нажать "Sign up with Discord"
+    - Подтвердить авторизацию
+  expected-result: |
+    Пользователь авторизован через Discord
